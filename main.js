@@ -16,11 +16,10 @@ class Canvas {
     document.body.appendChild(this.canvas);
 
     this.pixelRatio = window.devicePixelRatio > 1 ? 2 : 1;
-
     this.totalParticles = 6;
     this.particles = [];
-    this.maxRadius = 2400;
-    this.minRadius = 2400;
+    this.maxRadius = 2000;
+    this.minRadius = 2000;
 
     window.addEventListener("resize", this.resize.bind(this), false);
     this.resize();
@@ -93,7 +92,7 @@ class GlowParticle {
   }
 
   animate(ctx, stageWidth, stageHeight) {
-    this.sinValue += 0.01;
+    this.sinValue += 1;
 
     this.radius += Math.sin(this.sinValue);
 
