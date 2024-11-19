@@ -15,11 +15,11 @@ class Canvas {
     this.ctx = this.canvas.getContext("2d");
     document.body.appendChild(this.canvas);
 
-    this.pixelRatio = window.devicePixelRatio > 1 ? 2 : 1;
+    this.pixelRatio = document.body.PixelRatio > 1 ? 2 : 1;
     this.totalParticles = 6;
     this.particles = [];
-    this.maxRadius = 2000;
-    this.minRadius = 2000;
+    this.maxRadius = 1300;
+    this.minRadius = 1300;
 
     window.addEventListener("resize", this.resize.bind(this), false);
     this.resize();
@@ -28,15 +28,11 @@ class Canvas {
   }
 
   resize() {
-    this.stageWidth = document.body.clientWidth;
-    this.stageHeight = document.body.clientHeight;
-
+    this.stageWidth = window.innerWidth;
+    this.stageHeight = window.innerHeight;
     this.canvas.width = this.stageWidth * this.pixelRatio;
     this.canvas.height = this.stageHeight * this.pixelRatio;
-    this.ctx.scale(this.pixelRatio, this.pixelRatio);
-
     this.ctx.globalCompositeOperation = `saturation`;
-
     this.createParticles();
   }
 
@@ -85,8 +81,8 @@ class GlowParticle {
     this.radius = radius;
     this.rgb = rgb;
 
-    this.vx = Math.random() * 4;
-    this.vy = Math.random() * 4;
+    this.vx = Math.random() * 3;
+    this.vy = Math.random() * 3;
 
     this.sinValue = Math.random();
   }
@@ -134,3 +130,9 @@ class GlowParticle {
 }
 
 var canvasII = new Canvas();
+
+Canvas.style.width = 330 + "px";
+Canvas.style.height = 450 + "px";
+
+canvasII.style.width = 450 + "px";
+canvasII.style.height = 380 + "px;";
